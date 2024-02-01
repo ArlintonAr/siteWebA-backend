@@ -38,8 +38,6 @@ class Server{
        await connectionDb()
     }
 
-
-
     //Middlewares
     middlewares(){
 
@@ -48,7 +46,6 @@ class Server{
     }
 
     //Manejo de rutas
-
     routes(){
         this.app.use(this.apiRoutes.user,userRouter),
         this.app.use(this.apiRoutes.auth,authRouter)  

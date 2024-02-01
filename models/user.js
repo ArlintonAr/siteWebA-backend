@@ -27,7 +27,8 @@ const userSchema =new Schema({
         required:true,
     },
     img:{
-        type:String
+        type:String,
+        default:''
     },
     state:{
         type:Boolean,
@@ -41,6 +42,12 @@ const userSchema =new Schema({
 
 
 }) 
+
+userSchema.methods.toJSON=function () {
+    const {__v,password,_id,...user}=this.toObject()
+    user.uid=_id
+    return user
+}
 
 
 const User = model('User', userSchema);
