@@ -1,9 +1,10 @@
 
 import express  from "express";
-
+import cors from 'cors'
 
 import userRouter from "../routes/user.routes.js";
 import authRouter from "../routes/auth.routes.js";
+import projectRouter from "../routes/project.routes.js";
 
 
 import connectionDb from "../database/connectionDb.js";
@@ -19,8 +20,10 @@ class Server{
 
     this.apiRoutes={
         user:'/api/user',
-        auth:'/api/auth'
+        auth:'/api/auth',
+        project:'/api/project'
     }
+
 
     //Conexion a base de datos
     this.connectDB()
@@ -28,7 +31,7 @@ class Server{
     //Middleware
     this.middlewares()
     //Rutas
-        this.routes()
+    this.routes()
 
     }
 
@@ -40,7 +43,8 @@ class Server{
 
     //Middlewares
     middlewares(){
-
+        
+        this.app.use(cors())
         //Lectura del body
         this.app.use(express.json())
     }
@@ -48,7 +52,8 @@ class Server{
     //Manejo de rutas
     routes(){
         this.app.use(this.apiRoutes.user,userRouter),
-        this.app.use(this.apiRoutes.auth,authRouter)  
+        this.app.use(this.apiRoutes.auth,authRouter),
+        this.app.use(this.apiRoutes.project,projectRouter)  
     }
 
     //Iniciando el servidor 

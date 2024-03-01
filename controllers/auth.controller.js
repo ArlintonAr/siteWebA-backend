@@ -16,7 +16,7 @@ const loginUser = async (req = request, res = response) => {
         //
         if (!user) {
             return res.status(401).json({
-                msg: "Usuario o contraseña invalidas!"
+                msg: "Verifique sus credenciales!"
             })
         }
         //Validar si el usuario esta activo
@@ -29,7 +29,7 @@ const loginUser = async (req = request, res = response) => {
         const existPassword = bcrypt.compareSync(password,user.password)
         if (!existPassword) {
             return res.status(401).json({
-                msg: "Usuario o contraseña invalidas!"
+                msg: "Verifique sus credenciales!"
             })
         }
     
