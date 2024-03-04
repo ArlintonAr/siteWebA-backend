@@ -10,6 +10,7 @@ const connectionDb = async () => {
             .then(() => console.log('Base de datos conectada!'))
     } catch (error) {
         throw Error("Ha ocurrido un error en la conexión:", error)
+        
     }
 
 }
