@@ -17,10 +17,7 @@ class Server{
         
     this.app=express()
     this.PORT=process.env.PORT || 5000
-    this.optionsCors={
-        origin: 'https://site-web-a.vercel.app',
-        optionsSuccessStatus: 200
-    }
+ 
     this.apiRoutes={
         user:'/api/user',
         auth:'/api/auth',
@@ -47,7 +44,7 @@ class Server{
     //Middlewares
     middlewares(){
         
-        this.app.use(cors(this.optionsCors))
+        this.app.use(cors())
         //Lectura del body
         this.app.use(express.json())
     }
