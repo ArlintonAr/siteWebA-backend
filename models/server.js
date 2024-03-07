@@ -5,6 +5,7 @@ import cors from 'cors'
 import userRouter from "../routes/user.routes.js";
 import authRouter from "../routes/auth.routes.js";
 import projectRouter from "../routes/project.routes.js";
+import certificationRouter from "../routes/certification.routes.js";
 
 
 import connectionDb from "../database/connectionDb.js";
@@ -21,7 +22,8 @@ class Server{
     this.apiRoutes={
         user:'/api/user',
         auth:'/api/auth',
-        project:'/api/project'
+        project:'/api/project',
+        certification:'/api/certification'
     }
 
 
@@ -53,7 +55,8 @@ class Server{
     routes(){
         this.app.use(this.apiRoutes.user,userRouter),
         this.app.use(this.apiRoutes.auth,authRouter),
-        this.app.use(this.apiRoutes.project,projectRouter)  
+        this.app.use(this.apiRoutes.project,projectRouter),
+        this.app.use(this.apiRoutes.certification, certificationRouter)  
     }
 
     //Iniciando el servidor 

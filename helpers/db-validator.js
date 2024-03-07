@@ -1,3 +1,4 @@
+import Certification from "../models/certifications.js"
 import Role from "../models/role.js"
 import User from "../models/user.js"
 
@@ -29,5 +30,11 @@ const existRole = async (name) => {
     }
 }
 
+const credentialExist = async(credential)=>{
+    const credentialExist= await Certification.findOne({credential:credential})
+    if (credentialExist) {
+        throw new Error(`La credencial '${credential}' ya existe en la base de datos.`)
+    }
+}
 
-export { existUserForId, emailExist, existRole }
+export { existUserForId, emailExist, existRole,credentialExist }
